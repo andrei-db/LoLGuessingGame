@@ -12,9 +12,11 @@ namespace LeagueOfLegendsGuessingGame
 {
     public partial class Form1 : Form
     {
+        GameBL gameBL=new GameBL();
         public Form1()
         {
             InitializeComponent();
+            gameBL.StartGame();
         }
     }
 }

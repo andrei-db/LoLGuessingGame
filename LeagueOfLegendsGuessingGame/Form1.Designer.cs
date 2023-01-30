@@ -28,13 +28,96 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.qPictureBox = new System.Windows.Forms.PictureBox();
+            this.wPictureBox = new System.Windows.Forms.PictureBox();
+            this.ePictureBox = new System.Windows.Forms.PictureBox();
+            this.rPictureBox = new System.Windows.Forms.PictureBox();
+            this.guessingField = new System.Windows.Forms.TextBox();
+            this.guessingBtn = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.qPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ePictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rPictureBox)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // qPictureBox
+            // 
+            this.qPictureBox.Location = new System.Drawing.Point(39, 124);
+            this.qPictureBox.Name = "qPictureBox";
+            this.qPictureBox.Size = new System.Drawing.Size(166, 145);
+            this.qPictureBox.TabIndex = 0;
+            this.qPictureBox.TabStop = false;
+            // 
+            // wPictureBox
+            // 
+            this.wPictureBox.Location = new System.Drawing.Point(230, 124);
+            this.wPictureBox.Name = "wPictureBox";
+            this.wPictureBox.Size = new System.Drawing.Size(166, 145);
+            this.wPictureBox.TabIndex = 1;
+            this.wPictureBox.TabStop = false;
+            // 
+            // ePictureBox
+            // 
+            this.ePictureBox.Location = new System.Drawing.Point(415, 124);
+            this.ePictureBox.Name = "ePictureBox";
+            this.ePictureBox.Size = new System.Drawing.Size(166, 145);
+            this.ePictureBox.TabIndex = 2;
+            this.ePictureBox.TabStop = false;
+            // 
+            // rPictureBox
+            // 
+            this.rPictureBox.Location = new System.Drawing.Point(600, 124);
+            this.rPictureBox.Name = "rPictureBox";
+            this.rPictureBox.Size = new System.Drawing.Size(166, 145);
+            this.rPictureBox.TabIndex = 3;
+            this.rPictureBox.TabStop = false;
+            // 
+            // guessingField
+            // 
+            this.guessingField.Location = new System.Drawing.Point(462, 52);
+            this.guessingField.Name = "guessingField";
+            this.guessingField.Size = new System.Drawing.Size(176, 20);
+            this.guessingField.TabIndex = 4;
+            // 
+            // guessingBtn
+            // 
+            this.guessingBtn.Location = new System.Drawing.Point(644, 49);
+            this.guessingBtn.Name = "guessingBtn";
+            this.guessingBtn.Size = new System.Drawing.Size(75, 23);
+            this.guessingBtn.TabIndex = 5;
+            this.guessingBtn.Text = "Guess";
+            this.guessingBtn.UseVisualStyleBackColor = true;
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(846, 519);
+            this.Controls.Add(this.guessingBtn);
+            this.Controls.Add(this.guessingField);
+            this.Controls.Add(this.rPictureBox);
+            this.Controls.Add(this.ePictureBox);
+            this.Controls.Add(this.wPictureBox);
+            this.Controls.Add(this.qPictureBox);
+            this.Name = "Form1";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.qPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ePictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rPictureBox)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private System.Windows.Forms.PictureBox qPictureBox;
+        private System.Windows.Forms.PictureBox wPictureBox;
+        private System.Windows.Forms.PictureBox ePictureBox;
+        private System.Windows.Forms.PictureBox rPictureBox;
+        private System.Windows.Forms.TextBox guessingField;
+        private System.Windows.Forms.Button guessingBtn;
     }
 }
 
