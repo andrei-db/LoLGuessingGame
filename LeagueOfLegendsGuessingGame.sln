@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeagueOfLegendsGuessingGame", "LeagueOfLegendsGuessingGame\LeagueOfLegendsGuessingGame.csproj", "{F92B1A0E-84F2-4E1C-ADC5-FCC0DADD2858}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F92B1A0E-84F2-4E1C-ADC5-FCC0DADD2858}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F92B1A0E-84F2-4E1C-ADC5-FCC0DADD2858}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F92B1A0E-84F2-4E1C-ADC5-FCC0DADD2858}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F92B1A0E-84F2-4E1C-ADC5-FCC0DADD2858}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5981EF8C-31EF-437F-8C07-1201E2DD10C8}
+	EndGlobalSection
+EndGlobal
