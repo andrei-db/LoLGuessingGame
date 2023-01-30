@@ -35,6 +35,7 @@
             this.guessingField = new System.Windows.Forms.TextBox();
             this.guessingBtn = new System.Windows.Forms.Button();
             this.guessingResponse = new System.Windows.Forms.Label();
+            this.skipBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.qPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ePictureBox)).BeginInit();
@@ -83,18 +84,6 @@
             this.guessingField.Name = "guessingField";
             this.guessingField.Size = new System.Drawing.Size(176, 20);
             this.guessingField.TabIndex = 4;
-           
-            // 
-            // guessingResponse
-            // 
-            this.guessingResponse.AutoSize = true;
-            this.guessingResponse.BackColor = System.Drawing.SystemColors.Control;
-            this.guessingResponse.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guessingResponse.Location = new System.Drawing.Point(363, 383);
-            this.guessingResponse.Name = "guessingResponse";
-            this.guessingResponse.Size = new System.Drawing.Size(0, 25);
-            this.guessingResponse.TabIndex = 6;
-
             // 
             // guessingBtn
             // 
@@ -106,11 +95,33 @@
             this.guessingBtn.UseVisualStyleBackColor = true;
             this.guessingBtn.Click += new System.EventHandler(this.guessingBtn_Click);
             // 
+            // guessingResponse
+            // 
+            this.guessingResponse.AutoSize = true;
+            this.guessingResponse.BackColor = System.Drawing.SystemColors.Control;
+            this.guessingResponse.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guessingResponse.Location = new System.Drawing.Point(363, 383);
+            this.guessingResponse.Name = "guessingResponse";
+            this.guessingResponse.Size = new System.Drawing.Size(0, 25);
+            this.guessingResponse.TabIndex = 6;
+            // 
+            // skipBtn
+            // 
+            this.skipBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.skipBtn.Location = new System.Drawing.Point(662, 442);
+            this.skipBtn.Name = "skipBtn";
+            this.skipBtn.Size = new System.Drawing.Size(172, 55);
+            this.skipBtn.TabIndex = 7;
+            this.skipBtn.Text = "SKIP ( - 30 GOLD )";
+            this.skipBtn.UseVisualStyleBackColor = true;
+            this.skipBtn.Click += new System.EventHandler(this.skipBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(846, 519);
+            this.Controls.Add(this.skipBtn);
             this.Controls.Add(this.guessingResponse);
             this.Controls.Add(this.guessingBtn);
             this.Controls.Add(this.guessingField);
@@ -138,6 +149,7 @@
         private System.Windows.Forms.TextBox guessingField;
         private System.Windows.Forms.Button guessingBtn;
         private System.Windows.Forms.Label guessingResponse;
+        private System.Windows.Forms.Button skipBtn;
     }
 }
 

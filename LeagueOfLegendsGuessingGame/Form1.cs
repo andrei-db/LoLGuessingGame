@@ -22,14 +22,23 @@ namespace LeagueOfLegendsGuessingGame
             gameBL.SetGuessingFieldAndGuessingResponse(guessingField,guessingResponse);
 
             gameBL.StartGame();
-            gameBL.GenerateRandomChampion();
-            gameBL.GenerateChampionAbilities();
-            
-        }
+            GenerateNewRound();
 
+
+        }
+        private void GenerateNewRound() {
+            gameBL.GenerateRandomChampion();
+            gameBL.GenerateRandomAbility();
+        }
         private void guessingBtn_Click(object sender, EventArgs e)
         {
             gameBL.GuessTheChampion(); 
+        }
+
+        private void skipBtn_Click(object sender, EventArgs e)
+        {
+            GenerateNewRound();
+
         }
     }
 }

@@ -16,13 +16,17 @@ namespace LeagueOfLegendsGuessingGame
         LoLChampions loLChampions;
         string[] champPool;
         string path = "D:\\PersonalProjects\\LeagueOfLegendsGuessingGame\\RiotData\\10.10.3224670\\data\\en_US\\championFull.json";
-        string imagePath = "D:\\PersonalProjects\\LeagueOfLegendsGuessingGame\\RiotData\\10.10.3224670\\img\\spell\\";
+        string abilitiesImagesPath = "D:\\PersonalProjects\\LeagueOfLegendsGuessingGame\\RiotData\\10.10.3224670\\img\\spell\\";
+        string lockedImagePath = "D:\\PersonalProjects\\LeagueOfLegendsGuessingGame\\Images\\locked.jpg";
+
         private string champGenerated;
+        PictureBox[] abilitiesPB=new PictureBox[4];
         PictureBox qPB; PictureBox wPB; PictureBox ePB; PictureBox rPB;
         TextBox guessingField; Label guessingResponse;
         Random random = new Random();
-        int randomChampionIndex;
+        int randomChampionIndex,randomAbilityIndex;
         public void StartGame() {
+            
             loLChampions = JsonConvert.DeserializeObject<LoLChampions>(File.ReadAllText(path));
             champPool = new string[loLChampions.data.Count];
             int index = 0;
@@ -35,12 +39,25 @@ namespace LeagueOfLegendsGuessingGame
             randomChampionIndex = random.Next(0, champPool.Length);
             champGenerated = champPool[randomChampionIndex];
         }
-        
-        public void GenerateChampionAbilities() {
-            qPB.Image = System.Drawing.Image.FromFile(imagePath + loLChampions.data[champPool[randomChampionIndex]].spells[0].image.full);
-            wPB.Image = System.Drawing.Image.FromFile(imagePath + loLChampions.data[champPool[randomChampionIndex]].spells[1].image.full);
-            ePB.Image = System.Drawing.Image.FromFile(imagePath + loLChampions.data[champPool[randomChampionIndex]].spells[2].image.full);
-            rPB.Image = System.Drawing.Image.FromFile(imagePath + loLChampions.data[champPool[randomChampionIndex]].spells[3].image.full);
+        public void GenerateRandomAbilityIndex()
+        {
+            randomAbilityIndex = random.Next(0, 4);
+        }
+        private void LockAllAbilities() {
+            for (int i=0;i<4;i++) {
+                abilitiesPB[i].Image= System.Drawing.Image.FromFile(lockedImagePath);
+            }
+        }
+        private void UnlockOneAbility() {
+            GenerateRandomAbilityIndex();
+            abilitiesPB[randomAbilityIndex].Image= System.Drawing.Image.FromFile(abilitiesImagesPath + loLChampions.data[champPool[randomChampionIndex]].spells[randomAbilityIndex].image.full);
+
+        }
+        public void GenerateRandomAbility() {
+
+            LockAllAbilities();
+            UnlockOneAbility();
+           
         }
         public void GuessTheChampion() {
             if (guessingField.Text != "")
@@ -50,7 +67,7 @@ namespace LeagueOfLegendsGuessingGame
                     guessingResponse.Text = "Correct";
                     guessingResponse.BackColor = System.Drawing.Color.Lime;
                     GenerateRandomChampion();
-                    GenerateChampionAbilities();
+                    GenerateRandomAbility();
                 }
                 else
                 {
@@ -60,10 +77,10 @@ namespace LeagueOfLegendsGuessingGame
             }
         }
         public void SetPictureBox(PictureBox qPB, PictureBox wPB, PictureBox ePB, PictureBox rPB) {
-            this.qPB= qPB;
-            this.wPB = wPB;
-            this.ePB =ePB;
-            this.rPB = rPB;
+            abilitiesPB[0]= qPB;
+            abilitiesPB[1] = wPB;
+            abilitiesPB[2] = ePB;
+            abilitiesPB[3] = rPB;
         }
         public void SetGuessingFieldAndGuessingResponse(TextBox guessingField,Label guessingResponse) {
             this.guessingField = guessingField;
