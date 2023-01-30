@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace LeagueOfLegendsGuessingGame
 {
-    internal class LoLChampions
+    internal class Spells
     {
-        public Dictionary<string,Champion> data { get; set; }
-       
+        public Image image { get; set; }
     }
 }

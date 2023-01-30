@@ -1,7 +1,9 @@
-﻿namespace LeagueOfLegendsGuessingGame
+﻿using System.Collections.Generic;
+
+namespace LeagueOfLegendsGuessingGame
 {
     internal class Champion
     {
-        public string id { get; set; }
+        public Spells[] spells { get; set; }
     }
 }

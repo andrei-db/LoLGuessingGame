@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,10 +14,22 @@ namespace LeagueOfLegendsGuessingGame
     public partial class Form1 : Form
     {
         GameBL gameBL=new GameBL();
+       
         public Form1()
         {
             InitializeComponent();
+            gameBL.SetPictureBox(qPictureBox,wPictureBox,ePictureBox,rPictureBox);
+            gameBL.SetGuessingFieldAndGuessingResponse(guessingField,guessingResponse);
+
             gameBL.StartGame();
+            gameBL.GenerateRandomChampion();
+            gameBL.GenerateChampionAbilities();
+            
+        }
+
+        private void guessingBtn_Click(object sender, EventArgs e)
+        {
+            gameBL.GuessTheChampion(); 
         }
     }
 }
