@@ -1,6 +1,6 @@
 ﻿namespace LeagueOfLegendsGuessingGame
 {
-    partial class Form1
+    partial class GameForm
     {
         /// <summary>
         /// Required designer variable.
@@ -36,6 +36,10 @@
             this.guessingBtn = new System.Windows.Forms.Button();
             this.guessingResponse = new System.Windows.Forms.Label();
             this.skipBtn = new System.Windows.Forms.Button();
+            this.divisionTextLabel = new System.Windows.Forms.Label();
+            this.divisionLabel = new System.Windows.Forms.Label();
+            this.SeriesLabel = new System.Windows.Forms.Label();
+            this.SeriesResult = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.qPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ePictureBox)).BeginInit();
@@ -44,7 +48,7 @@
             // 
             // qPictureBox
             // 
-            this.qPictureBox.Location = new System.Drawing.Point(39, 124);
+            this.qPictureBox.Location = new System.Drawing.Point(52, 228);
             this.qPictureBox.Name = "qPictureBox";
             this.qPictureBox.Size = new System.Drawing.Size(166, 145);
             this.qPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -53,7 +57,7 @@
             // 
             // wPictureBox
             // 
-            this.wPictureBox.Location = new System.Drawing.Point(230, 124);
+            this.wPictureBox.Location = new System.Drawing.Point(243, 228);
             this.wPictureBox.Name = "wPictureBox";
             this.wPictureBox.Size = new System.Drawing.Size(166, 145);
             this.wPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -62,7 +66,7 @@
             // 
             // ePictureBox
             // 
-            this.ePictureBox.Location = new System.Drawing.Point(415, 124);
+            this.ePictureBox.Location = new System.Drawing.Point(428, 228);
             this.ePictureBox.Name = "ePictureBox";
             this.ePictureBox.Size = new System.Drawing.Size(166, 145);
             this.ePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -71,7 +75,7 @@
             // 
             // rPictureBox
             // 
-            this.rPictureBox.Location = new System.Drawing.Point(600, 124);
+            this.rPictureBox.Location = new System.Drawing.Point(613, 228);
             this.rPictureBox.Name = "rPictureBox";
             this.rPictureBox.Size = new System.Drawing.Size(166, 145);
             this.rPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -112,15 +116,57 @@
             this.skipBtn.Name = "skipBtn";
             this.skipBtn.Size = new System.Drawing.Size(172, 55);
             this.skipBtn.TabIndex = 7;
-            this.skipBtn.Text = "SKIP ( - 30 GOLD )";
+            this.skipBtn.Text = "SKIP ( - 20 LP )";
             this.skipBtn.UseVisualStyleBackColor = true;
             this.skipBtn.Click += new System.EventHandler(this.skipBtn_Click);
+            // 
+            // divisionTextLabel
+            // 
+            this.divisionTextLabel.AutoSize = true;
+            this.divisionTextLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.divisionTextLabel.Location = new System.Drawing.Point(48, 47);
+            this.divisionTextLabel.Name = "divisionTextLabel";
+            this.divisionTextLabel.Size = new System.Drawing.Size(95, 24);
+            this.divisionTextLabel.TabIndex = 8;
+            this.divisionTextLabel.Text = "Division: ";
+            // 
+            // divisionLabel
+            // 
+            this.divisionLabel.AutoSize = true;
+            this.divisionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.divisionLabel.Location = new System.Drawing.Point(138, 48);
+            this.divisionLabel.Name = "divisionLabel";
+            this.divisionLabel.Size = new System.Drawing.Size(0, 24);
+            this.divisionLabel.TabIndex = 9;
+            // 
+            // SeriesLabel
+            // 
+            this.SeriesLabel.AutoSize = true;
+            this.SeriesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SeriesLabel.Location = new System.Drawing.Point(286, 145);
+            this.SeriesLabel.Name = "SeriesLabel";
+            this.SeriesLabel.Size = new System.Drawing.Size(0, 24);
+            this.SeriesLabel.TabIndex = 11;
+            // 
+            // SeriesResult
+            // 
+            this.SeriesResult.AutoSize = true;
+            this.SeriesResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SeriesResult.Location = new System.Drawing.Point(196, 144);
+            this.SeriesResult.Name = "SeriesResult";
+            this.SeriesResult.Size = new System.Drawing.Size(75, 24);
+            this.SeriesResult.TabIndex = 10;
+            this.SeriesResult.Text = "Series:";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(846, 519);
+            this.Controls.Add(this.SeriesLabel);
+            this.Controls.Add(this.SeriesResult);
+            this.Controls.Add(this.divisionLabel);
+            this.Controls.Add(this.divisionTextLabel);
             this.Controls.Add(this.skipBtn);
             this.Controls.Add(this.guessingResponse);
             this.Controls.Add(this.guessingBtn);
@@ -150,6 +196,10 @@
         private System.Windows.Forms.Button guessingBtn;
         private System.Windows.Forms.Label guessingResponse;
         private System.Windows.Forms.Button skipBtn;
+        private System.Windows.Forms.Label divisionTextLabel;
+        private System.Windows.Forms.Label divisionLabel;
+        private System.Windows.Forms.Label SeriesLabel;
+        private System.Windows.Forms.Label SeriesResult;
     }
 }
 

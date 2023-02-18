@@ -11,24 +11,26 @@ using System.Windows.Forms;
 
 namespace LeagueOfLegendsGuessingGame
 {
-    public partial class Form1 : Form
+    public partial class GameForm : Form
     {
         GameBL gameBL=new GameBL();
-       
-        public Form1()
+ 
+        public GameForm()
         {
+         
             InitializeComponent();
             gameBL.SetPictureBox(qPictureBox,wPictureBox,ePictureBox,rPictureBox);
             gameBL.SetGuessingFieldAndGuessingResponse(guessingField,guessingResponse);
-
-            gameBL.StartGame();
-            GenerateNewRound();
+            gameBL.SetDivision(divisionLabel);
+            gameBL.SetSeriesLabel(SeriesLabel);
+            gameBL.InitializeFirstRound();
 
 
         }
-        private void GenerateNewRound() {
+        private void SkipToNextRound() {
             gameBL.GenerateRandomChampion();
             gameBL.GenerateRandomAbility();
+            gameBL.GameLost();
         }
         private void guessingBtn_Click(object sender, EventArgs e)
         {
@@ -37,8 +39,8 @@ namespace LeagueOfLegendsGuessingGame
 
         private void skipBtn_Click(object sender, EventArgs e)
         {
-            GenerateNewRound();
-
+            // SkipToNextRound();
+         
         }
     }
 }
