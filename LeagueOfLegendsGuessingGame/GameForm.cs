@@ -13,34 +13,35 @@ namespace LeagueOfLegendsGuessingGame
 {
     public partial class GameForm : Form
     {
-        GameBL gameBL=new GameBL();
+        GameController gameController=new GameController();
  
         public GameForm()
         {
          
             InitializeComponent();
-            gameBL.SetPictureBox(qPictureBox,wPictureBox,ePictureBox,rPictureBox);
-            gameBL.SetGuessingFieldAndGuessingResponse(guessingField,guessingResponse);
-            gameBL.SetDivision(divisionLabel);
-            gameBL.SetSeriesLabel(SeriesLabel);
-            gameBL.InitializeFirstRound();
+            gameController.SetData(Result0, Result1, Result2, Result3, Result4,
+                qPictureBox,wPictureBox,ePictureBox,rPictureBox,
+                guessingField,
+                this);
+            gameController.InitializeFirstRound();
 
 
         }
-        private void SkipToNextRound() {
-            gameBL.GenerateRandomChampion();
-            gameBL.GenerateRandomAbility();
-            gameBL.GameLost();
-        }
-        private void guessingBtn_Click(object sender, EventArgs e)
+   
+        private void guessBtn_Click(object sender, EventArgs e)
         {
-            gameBL.GuessTheChampion(); 
+            gameController.GuessTheChampion();
         }
 
-        private void skipBtn_Click(object sender, EventArgs e)
+        private void surrenderBtn_Click(object sender, EventArgs e)
         {
-            // SkipToNextRound();
+            gameController.Surrender();
          
+        }
+
+        private void idkBtn_Click(object sender, EventArgs e)
+        {
+            gameController.Idk();
         }
     }
 }

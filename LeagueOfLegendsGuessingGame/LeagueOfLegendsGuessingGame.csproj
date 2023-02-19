@@ -72,6 +72,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataFromJSON.cs" />
+    <Compile Include="GameClientForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GameClientForm.Designer.cs">
+      <DependentUpon>GameClientForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GameClientController.cs" />
     <Compile Include="Game\Champion.cs" />
     <Compile Include="GameDatabase\DBConnection.cs" />
     <Compile Include="GameForm.cs">
@@ -80,7 +88,7 @@
     <Compile Include="GameForm.Designer.cs">
       <DependentUpon>GameForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Game\GameBL.cs" />
+    <Compile Include="Game\GameController.cs" />
     <Compile Include="Game\Image.cs" />
     <Compile Include="LoginAndRegister\Login.cs" />
     <Compile Include="LoginRegisterForm.cs">
@@ -95,6 +103,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="LoginAndRegister\Register.cs" />
     <Compile Include="Game\Spells.cs" />
+    <EmbeddedResource Include="GameClientForm.resx">
+      <DependentUpon>GameClientForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GameForm.resx">
       <DependentUpon>GameForm.cs</DependentUpon>
     </EmbeddedResource>

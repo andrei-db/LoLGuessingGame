@@ -25,3 +25,4 @@ D:\PersonalProjects\LeagueOfLegendsGuessingGame\LeagueOfLegendsGuessingGame\bin\
 D:\PersonalProjects\LeagueOfLegendsGuessingGame\LeagueOfLegendsGuessingGame\obj\x64\Debug\LeagueOfLegendsGuessingGame.exe.config
 D:\PersonalProjects\LeagueOfLegendsGuessingGame\LeagueOfLegendsGuessingGame\obj\x64\Debug\LeagueOfLegendsGuessingGame.LoginRegisterForm.resources
 D:\PersonalProjects\LeagueOfLegendsGuessingGame\LeagueOfLegendsGuessingGame\obj\x64\Debug\LeagueOfLegendsGuessingGame.GameForm.resources
+D:\PersonalProjects\LeagueOfLegendsGuessingGame\LeagueOfLegendsGuessingGame\obj\x64\Debug\LeagueOfLegendsGuessingGame.GameClientForm.resources

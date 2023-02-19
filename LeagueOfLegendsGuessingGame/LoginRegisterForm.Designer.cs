@@ -63,6 +63,7 @@
             // 
             this.passwordLoginTB.Location = new System.Drawing.Point(136, 211);
             this.passwordLoginTB.Name = "passwordLoginTB";
+            this.passwordLoginTB.PasswordChar = '*';
             this.passwordLoginTB.Size = new System.Drawing.Size(100, 20);
             this.passwordLoginTB.TabIndex = 2;
             // 
@@ -77,6 +78,7 @@
             // 
             this.passwordRegisterTB.Location = new System.Drawing.Point(621, 211);
             this.passwordRegisterTB.Name = "passwordRegisterTB";
+            this.passwordRegisterTB.PasswordChar = '*';
             this.passwordRegisterTB.Size = new System.Drawing.Size(100, 20);
             this.passwordRegisterTB.TabIndex = 4;
             // 
