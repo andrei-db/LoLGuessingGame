@@ -91,7 +91,6 @@
     </Compile>
     <Compile Include="Game\GameController.cs" />
     <Compile Include="Game\Image.cs" />
-    <Compile Include="LoginAndRegister\Login.cs" />
     <Compile Include="LoginRegisterForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,7 +103,6 @@
     <Compile Include="PlayerStats.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="LoginAndRegister\Register.cs" />
     <Compile Include="Game\Spells.cs" />
     <EmbeddedResource Include="GameClientForm.resx">
       <DependentUpon>GameClientForm.cs</DependentUpon>
