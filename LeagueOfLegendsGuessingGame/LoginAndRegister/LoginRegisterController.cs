@@ -17,19 +17,40 @@ namespace LeagueOfLegendsGuessingGame
         Register register;
         GameClientForm gameClient;
         LoginRegisterForm currentForm;
+        PlayerStats loginPlayerStats;
+        MySqlCommand cmd;
+            MySqlDataReader loginCredentialsReader, playerStatsReader, playerDivisionReader;
         public void Login(string username,string password) {
             login = new Login(username,password);
 
-            string query = "SELECT username,password FROM accounts WHERE username='"+login.GetUsername()+"' AND password='"+login.GetPassword()+"'";
-            MySqlCommand cmd= new MySqlCommand(query, dBConnection.Connect());
-            MySqlDataReader reader=cmd.ExecuteReader();
+            string loginQuery = "SELECT username,password FROM accounts WHERE username='"+
+                login.GetUsername()+"' AND password='"+login.GetPassword()+"'";
 
-            if (reader.Read()) {
+            string playerStatsQuery = "SELECT username,games_played,wins,losses FROM account_stats WHERE username='" +
+                username+ "'";
+            string playerDivisionQuery = "SELECT divisionName,lp FROM account_division WHERE username='" +
+                username + "'";
+            cmd = new MySqlCommand(loginQuery, dBConnection.Connect());
+             loginCredentialsReader=cmd.ExecuteReader();
+            cmd = new MySqlCommand(playerStatsQuery, dBConnection.Connect());
+             playerStatsReader = cmd.ExecuteReader();
+            cmd = new MySqlCommand(playerDivisionQuery, dBConnection.Connect());
+             playerDivisionReader = cmd.ExecuteReader();
+            if (loginCredentialsReader.Read() && playerStatsReader.Read() && playerDivisionReader.Read()) {
+
+                
+                    loginPlayerStats = new PlayerStats(playerStatsReader["username"].ToString(),
+                        new Division(playerDivisionReader["divisionName"].ToString(),int.Parse(playerDivisionReader["lp"].ToString())),
+                       int.Parse(playerStatsReader["games_played"].ToString()),
+                       int.Parse(playerStatsReader["wins"].ToString()), int.Parse(playerStatsReader["losses"].ToString()));
+                
+
+                Debug.WriteLine(loginPlayerStats.GetUsername()+ " " + loginPlayerStats.GetDivision().GetDivisionName()+" " + loginPlayerStats.GetGamesPlayed() + " "+loginPlayerStats.GetWins()+ " " + loginPlayerStats.GetLosses());
+                
                 gameClient = new GameClientForm();
                 gameClient.Show();
                 currentForm.Hide();
-                
-              
+
             }
             dBConnection.CloseConnection();
         }
@@ -42,25 +63,32 @@ namespace LeagueOfLegendsGuessingGame
 
             dBConnection.CloseConnection();
         }
+        PlayerStats registerPlayerStats;
         private void CreateAccount(string username,string password) {
             string registerQuery = "INSERT INTO accounts(username,password)" +
-                " VALUES ('" + username + "','" + password + "')";
+                " VALUES (@username,@password)";
 
             MySqlCommand cmdRegister = new MySqlCommand(registerQuery, dBConnection.Connect());
 
+            cmdRegister.Parameters.AddWithValue("@username", username);
+            cmdRegister.Parameters.AddWithValue("@password",password);
+
+            registerPlayerStats = new PlayerStats(username,new Division("IRON IV",0), 0, 0, 0);
             cmdRegister.ExecuteReader();
         }
+       
         private void InitializeAccount(string username) {
-            string division = "IRON IV";
-            int gp = 0; int wins = 0; int losses = 0; int lp = 0;
+           
             string initializeDivisionQuery = "INSERT INTO account_rank(username,division,lp,games_played,wins,losses) VALUES (@username,@division,@lp,@games_played,@wins,@losses)";
             MySqlCommand cmdRank = new MySqlCommand(initializeDivisionQuery, dBConnection.Connect());
+           
+            
             cmdRank.Parameters.AddWithValue("@username", username);
-            cmdRank.Parameters.AddWithValue("@division", division);
-            cmdRank.Parameters.AddWithValue("@lp", lp);
-            cmdRank.Parameters.AddWithValue("@games_played", gp);
-            cmdRank.Parameters.AddWithValue("@wins", wins);
-            cmdRank.Parameters.AddWithValue("@losses", losses);
+            cmdRank.Parameters.AddWithValue("@division", registerPlayerStats.GetDivision().GetDivisionName());
+            cmdRank.Parameters.AddWithValue("@lp", registerPlayerStats.GetDivision().GetLp());
+            cmdRank.Parameters.AddWithValue("@games_played", registerPlayerStats.GetGamesPlayed());
+            cmdRank.Parameters.AddWithValue("@wins", registerPlayerStats.GetWins());
+            cmdRank.Parameters.AddWithValue("@losses", registerPlayerStats.GetLosses());
             cmdRank.ExecuteReader();
         }
         public void SetCurrentForm(LoginRegisterForm form) {

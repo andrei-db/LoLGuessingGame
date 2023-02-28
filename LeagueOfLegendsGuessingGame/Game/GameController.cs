@@ -114,13 +114,7 @@ namespace LeagueOfLegendsGuessingGame
         }
 
         private void WonOrLost() {
-            if (wins < 3)
-            {
-                Debug.WriteLine("lost");
-            }
-            else {
-                Debug.WriteLine("won");
-            }
+            
         }
 
 

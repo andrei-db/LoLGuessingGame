@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataFromJSON.cs" />
+    <Compile Include="Division.cs" />
     <Compile Include="GameClientForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +100,8 @@
     </Compile>
     <Compile Include="LoginAndRegister\LoginRegisterController.cs" />
     <Compile Include="Game\LoLChampions.cs" />
+    <Compile Include="MatchHistory.cs" />
+    <Compile Include="PlayerStats.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="LoginAndRegister\Register.cs" />
