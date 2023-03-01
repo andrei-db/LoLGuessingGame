@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using MySql.Data.MySqlClient;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace LeagueOfLegendsGuessingGame
 {
@@ -38,7 +40,14 @@ namespace LeagueOfLegendsGuessingGame
         };
 
         int currentRound = 0;
+        
+       
+        int gamesPlayed = 0;
+        int wins = 0;
+        int losses = 0;
 
+        MySqlCommand cmd;
+        MySqlDataReader reader;
         public void InitializeFirstRound() {
   
             loLChampions = JsonConvert.DeserializeObject<LoLChampions>(File.ReadAllText(path));
@@ -75,16 +84,18 @@ namespace LeagueOfLegendsGuessingGame
             LockAllAbilities();
             UnlockOneAbility(); 
         }
-        int wins = 0;
+        int roundsWon = 0;
         public void GuessTheChampion() {
             if (guessingField.Text != "")
             {
                 if (guessingField.Text.ToLower() == champGenerated.ToLower())
                 {
-                    if (currentRound < 5) resultsPB[currentRound++].Image = System.Drawing.Image.FromFile(correctAnswer);
+                    if (currentRound < 5) {
+                        roundsWon++;
+                        resultsPB[currentRound++].Image = System.Drawing.Image.FromFile(correctAnswer);
+                    } 
                     else if (currentRound == 5)
                     {
-                        wins++;
                         WonOrLost();
                         Debug.WriteLine("response");
                         OpenGameClientFormAndCloseCurrent();
@@ -114,7 +125,17 @@ namespace LeagueOfLegendsGuessingGame
         }
 
         private void WonOrLost() {
-            
+
+            if (roundsWon > 2)
+            {
+                wins++;
+            }
+            else {
+                losses++;
+            }
+            gamesPlayed++;
+
+          
         }
 
 
@@ -145,7 +166,23 @@ namespace LeagueOfLegendsGuessingGame
         public void Surrender()
         {
             //-25 lp
+            AddGameToMatchHistory();
             OpenGameClientFormAndCloseCurrent();
+            
+
+        }
+        private void AddGameToMatchHistory() {
+            string query = "INSERT INTO history(username,result,score,lp) VALUES(@username,@result,@score,@lp)";
+
+            MatchHistoryData mhd = new MatchHistoryData("Defeat","Surrender",-25);
+
+            cmd = new MySqlCommand(query, DBConnection.Connect());
+            cmd.Parameters.AddWithValue("@username", StatsData.GetUsername());
+            cmd.Parameters.AddWithValue("@result", mhd.GetResult());
+            cmd.Parameters.AddWithValue("@score", mhd.GetScore());
+            cmd.Parameters.AddWithValue("@lp", mhd.GetLp());
+
+            cmd.ExecuteReader();
         }
         private void OpenGameClientFormAndCloseCurrent() {
             GameClientForm gameClientForm = new GameClientForm();

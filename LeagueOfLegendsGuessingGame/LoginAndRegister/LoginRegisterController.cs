@@ -13,37 +13,56 @@ namespace LeagueOfLegendsGuessingGame
 {
     internal class LoginRegisterController
     {
-        GameClientForm gameClient;
+        
         LoginRegisterForm currentForm;
     
         MySqlCommand cmd;
-        MySqlDataReader loginReader;
+        MySqlDataReader reader;
         public void Login(string username,string password) {
          
             string loginQuery = "SELECT username,password FROM accounts WHERE username='"+
                 username+"' AND password='"+password+"'";
          
             cmd = new MySqlCommand(loginQuery, DBConnection.Connect());
-            loginReader = cmd.ExecuteReader();
+            reader = cmd.ExecuteReader();
 
-            if (loginReader.Read()) {
-                  gameClient = new GameClientForm();
+            if (reader.Read()) {
+                GetStatsFromDB(username);
+                GameClientForm gameClient = new GameClientForm();
                 gameClient.Show();
                 currentForm.Hide();
             }
+
+            
  
+        }
+        public void GetStatsFromDB(string username) {
+            string statsQuery = "SELECT username,division,lp FROM ranked WHERE username='" +
+                username +"'";
+            cmd = new MySqlCommand(statsQuery,DBConnection.Connect());
+            reader = cmd.ExecuteReader();
+
+            if (reader.Read())
+            {
+               
+                StatsData.GetData(reader["username"].ToString(), reader["division"].ToString(), 
+                    Int32.Parse( reader["lp"].ToString()));
+
+          
+            }
+            
         }
         public void Register(string username, string password)
         {
             string registerQuery = "INSERT INTO accounts(username,password)" +
                " VALUES (@username,@password)";
 
-            MySqlCommand cmdRegister = new MySqlCommand(registerQuery, DBConnection.Connect());
+            cmd = new MySqlCommand(registerQuery, DBConnection.Connect());
 
-            cmdRegister.Parameters.AddWithValue("@username", username);
-            cmdRegister.Parameters.AddWithValue("@password", password);
+            cmd.Parameters.AddWithValue("@username", username);
+            cmd.Parameters.AddWithValue("@password", password);
 
-            cmdRegister.ExecuteReader();
+            cmd.ExecuteReader();
 
             initializeStats(username);
 
@@ -51,17 +70,14 @@ namespace LeagueOfLegendsGuessingGame
 
         private void initializeStats(string username)
         {
-            string statsQuery = "INSERT INTO stats(username,division,lp,games_played,wins,losses)" +
-               " VALUES (@username,@division,@lp,@games_played,@wins,@losses)";
+            string statsQuery = "INSERT INTO stats(username,division,lp)" +
+               " VALUES (@username,@division,@lp)";
 
-            MySqlCommand cmd = new MySqlCommand(statsQuery, DBConnection.Connect());
+            cmd = new MySqlCommand(statsQuery, DBConnection.Connect());
 
             cmd.Parameters.AddWithValue("@username", username);
             cmd.Parameters.AddWithValue("@division", "IRON IV");
             cmd.Parameters.AddWithValue("@lp", 0);
-            cmd.Parameters.AddWithValue("@games_played", 0);
-            cmd.Parameters.AddWithValue("@wins", 0);
-            cmd.Parameters.AddWithValue("@losses", 0);
 
             cmd.ExecuteReader();
 
